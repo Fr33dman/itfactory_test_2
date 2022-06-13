@@ -1,0 +1,35 @@
+{% extends 'client_base.html' %}
+
+{% block title %}Organizations{% endblock %}
+
+{% block body %}
+
+    <h1>Организации:</h1>
+
+    <form method="GET" class="post-form" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ filter_form.as_p }}
+        <button type="submit" class="save btn btn-default">Поиск</button>
+    </form>
+
+    {% if object_list %}
+
+        <table border="1">
+        <caption>Organizations</caption>
+       <tr>
+        <th>id</th>
+        <th>Имя</th>
+        <th>Клиент</th>
+       </tr>
+
+        {% for org in object_list %}
+            <tr><td>{{ org.id }}</td><td>{{ org.name }}</td><td>{{ org.client.name }}</td></tr>
+        {% endfor %}
+
+        </table>
+
+    {% else %}
+        <h2>Организаций пока что нет.</h2>
+    {% endif %}
+
+{% endblock %}

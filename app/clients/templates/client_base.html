@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+
+{% block project_urls %}
+    <li><a href="{% url 'clients:upload_files' %}">Загрузка файлов</a></li>
+    <li><a href="{% url 'clients:clients_list' %}">Клиенты</a></li>
+    <li><a href="{% url 'clients:organizations_list' %}">Организации</a></li>
+    <li><a href="{% url 'clients:bills_list' %}">Счета</a></li>
+{% endblock %}

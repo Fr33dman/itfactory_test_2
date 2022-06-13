@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+
+{% block title %}API{% endblock %}
+
+
+{% block body %}
+    <h1>API</h1>
+    <ul>Эндпоинты:<br><br>
+    <li><a href="{% url 'api:upload_files' %}">Загрузка файлов</a></li>
+    bills: data: файл формата xls или xlsx <br>
+    client_org: data: файл формата xls или xlsx<br><br>
+    <li><a href="/api/clients/">Клиенты</a></li><br>
+    <li><a href="/api/organizations/">Организации</a></li>
+    search: query parameter: имя клиента или организации<br><br>
+    <li><a href="/api/bills/">Счета</a></li>
+    search: query parameter: имя клиента или организации<br>
+    </ul>
+{% endblock %}

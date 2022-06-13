@@ -1,0 +1,31 @@
+{% extends 'client_base.html' %}
+
+{% block title %}Clients{% endblock %}
+
+{% block body %}
+
+    <h1>Клиенты:</h1>
+
+    {% if object_list %}
+
+        <table border="1">
+        <caption>Clients</caption>
+       <tr>
+        <th>id</th>
+        <th>Имя</th>
+       </tr>
+
+        {% for cli in object_list %}
+            <tr>
+                <td><a href="{% url "clients:clients_detailed" slug=cli.name %}">{{ cli.id }}</a></td>
+                <td>{{ cli.name }}</td>
+            </tr>
+        {% endfor %}
+
+        </table>
+
+    {% else %}
+        <h2>Клиентов пока что нет.</h2>
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'client_base.html' %}
+
+{% block title %}Bills{% endblock %}
+
+{% block body %}
+
+    <h1>Счета организаций:</h1>
+
+    <form method="GET" class="post-form" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ filter_form.as_p }}
+        <button type="submit" class="save btn btn-default">Поиск</button>
+    </form>
+
+    {% if object_list %}
+
+        <table border="1">
+        <caption>Bills</caption>
+       <tr>
+        <th>id</th>
+        <th>Организация</th>
+        <th>№</th>
+        <th>Сумма</th>
+        <th>Дата</th>
+       </tr>
+
+        {% for bill in object_list %}
+            <tr>
+                <td>{{ bill.id }}</td><td>{{ bill.organization.name }}</td>
+                <td>{{ bill.unique_id }}</td><td>{{ bill.sum }}</td><td>{{ bill.date }}</td>
+            </tr>
+        {% endfor %}
+
+        </table>
+
+    {% else %}
+        <h2>Организаций пока что нет.</h2>
+    {% endif %}
+
+{% endblock %}

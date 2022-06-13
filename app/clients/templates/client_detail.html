@@ -1,0 +1,29 @@
+{% extends 'client_base.html' %}
+
+{% block title %}Client {{ object.name }}{% endblock %}
+
+{% block body %}
+
+    {% if object %}
+
+    <h1>Клиент {{ object.name }}:</h1>
+
+        <table border="1">
+        <caption>Client</caption>
+       <tr>
+        <th>id</th>
+        <th>Имя</th>
+        <th>Кол-во организаций</th>
+        <th>Сумма по счетам организаций</th>
+       </tr>
+        <tr>
+            <td>{{ object.id }}</td><td>{{ object.name }}</td>
+            <td>{{ organizations_count }}</td><td>{{ bills_sum }}</td>
+       </tr>
+        </table>
+
+    {% else %}
+        <h2>Такого клиента не существует</h2>
+    {% endif %}
+
+{% endblock %}
